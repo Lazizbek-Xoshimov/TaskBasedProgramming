@@ -9,7 +9,12 @@ public class Program
         var stopwatch = new Stopwatch();
 
         stopwatch.Start();
-        await Task.WhenAll(BoilEgg(), ToastBread(), MakeTea());
+
+        Task taskBoilEgg = BoilEgg();
+        Task taskToastBread = ToastBread();
+        Task taskMakeTea = MakeTea();
+
+        await Task.WhenAll(taskBoilEgg, taskToastBread, taskMakeTea);
         Console.WriteLine("Breakfast is ready.");
         stopwatch.Stop();
 
